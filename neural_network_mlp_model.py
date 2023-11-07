@@ -411,7 +411,7 @@ class Loss_function:
         self.transform = {
                     "no_transform" : lambda x : x ,
                     "softmax_transform" : lambda x : torch.nn.Softmax(dim=-1)(x),
-                    "zero_clamp_transform" : lambda x : x + 1e-9,
+                    "zero_clamp_transform" : lambda x : torch.clamp(x, min=1e-9),
                     "sigmoid_transform": lambda x : torch.nn.Sigmoid()(x),
                     "tanh_transform": lambda x : torch.nn.Tanh()(x),
                     "relu_transform": lambda x : torch.nn.ELU() (x),
